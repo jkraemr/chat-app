@@ -1,7 +1,64 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Bubble, GiftedChat } from 'react-native-gifted-chat'
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 
 export default class Chat extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      messages: [],
+    };
+
+  }
+
+  componentDidMount() {
+
+    let name = this.props.route.params.name;
+
+    this.setState({
+      // Create static messages
+      messages: [
+        // Normal message
+        {
+          _id: 1,
+          text: `Hello ${name}!`,
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/people',
+          },
+        },
+        // System message
+        {
+          _id: 2,
+          text: `${name} joined the chat`,
+          createdAt: new Date(),
+          system: true,
+        },
+      ],
+    })
+  }
+
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
+
+  renderBubble(props) {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          right: {
+            backgroundColor: '#123'
+          }
+        }}
+      />
+    )
+  }
 
   render() {
 
@@ -15,7 +72,14 @@ export default class Chat extends React.Component {
       <View style={styles.container}>
 
         <View style={{ ...styles.container, backgroundColor: bgColor }}>
-          {/* <Text style={styles.textLight}>Hello {name} !</Text> */}
+          <GiftedChat
+            renderBubble={this.renderBubble.bind(this)}
+            messages={this.state.messages}
+            onSend={messages => this.onSend(messages)}
+            user={{
+              _id: 1,
+            }}
+          />
         </View>
 
       </View>
@@ -28,16 +92,6 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width: '100%',
-
-  },
-
-  textLight: {
-    color: '#000',
-    fontSize: 30,
   },
 
 });
