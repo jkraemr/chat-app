@@ -80,6 +80,9 @@ export default class Chat extends React.Component {
               _id: 1,
             }}
           />
+          {/* Avoid hidden input field beneath keyboard on Android devices*/}
+          {Platform.OS === 'android' ? <KeyboardAvoidingView behavior='height' /> : null
+          }
         </View>
 
       </View>
