@@ -50,6 +50,7 @@ export default class Chat extends React.Component {
       'Cannot update a component',
       'Animated.event now requires a second argument for options',
       'Animated: `useNativeDriver` was not specified',
+      'Possible Unhandled Promise Rejection',
     ]);
 
   };

@@ -37,11 +37,12 @@ export default class Start extends React.Component {
 
       <ImageBackground source={bgImg} style={styles.bgImg}>
 
-        <View style={styles.container}>
+        <View
           accessible={false}
           accessibilityRole='header'
           accessibilityLabel='Chat App'
           accessibilityHint='Title of the app'
+          style={styles.container}>
           <Text style={styles.title}>Chat App</Text>
 
           <View style={styles.mainBox}>
