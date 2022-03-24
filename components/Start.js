@@ -38,12 +38,20 @@ export default class Start extends React.Component {
       <ImageBackground source={bgImg} style={styles.bgImg}>
 
         <View style={styles.container}>
+          accessible={false}
+          accessibilityRole='header'
+          accessibilityLabel='Chat App'
+          accessibilityHint='Title of the app'
           <Text style={styles.title}>Chat App</Text>
 
           <View style={styles.mainBox}>
             <View style={styles.nameBox}>
               <FontAwesomeIcon name='user' style={styles.userIcon} size={25} color='#757083' />
               <TextInput
+                accessible={true}
+                accessibilityRole='search'
+                accessibilityLabel='Your Name'
+                accessibilityHint='Enter the name you want to use in your chat session'
                 style={styles.nameInput}
                 onChangeText={(name) => this.setState({ name })}
                 value={this.state.name}
@@ -57,18 +65,34 @@ export default class Start extends React.Component {
               </View>
               <View style={styles.color}>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityRole='combobox'
+                  accessibilityLabel='Dark and black background'
+                  accessibilityHint='Set Marshland as dark and black background color for chat view'
                   style={styles.color01}
                   onPress={() => this.changeChatBg(chatBg.color01)}>
                 </TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityRole='combobox'
+                  accessibilityLabel='Dark purple background'
+                  accessibilityHint='Set Mulled vine as dark purple background color for chat view'
                   style={styles.color02}
                   onPress={() => this.changeChatBg(chatBg.color02)}>
                 </TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityRole='combobox'
+                  accessibilityLabel='Grey blue background'
+                  accessibilityHint='Set Regent Gray as grey blue background color for chat view'
                   style={styles.color03}
                   onPress={() => this.changeChatBg(chatBg.color03)}>
                 </TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityRole='combobox'
+                  accessibilityLabel='Light green background'
+                  accessibilityHint='Set Clay Ash as light green background color for chat view'
                   style={styles.color04}
                   onPress={() => this.changeChatBg(chatBg.color04)}>
                 </TouchableOpacity>
@@ -78,6 +102,10 @@ export default class Start extends React.Component {
 
             <View style={styles.buttonBox}>
               <TouchableOpacity
+                accessible={true}
+                accessibilityRole='button'
+                accessibilityLabel='Start Chatting'
+                accessibilityHint='Navigate to chat view'
                 style={styles.buttonStyle}
                 onPress={() => this.props.navigation.navigate('Chat', { name: this.state.name, bgColor: this.state.bgColor })}><Text style={styles.buttonText}>Start Chatting</Text></TouchableOpacity>
             </View>
