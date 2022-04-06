@@ -74,3 +74,7 @@ the latest news.
 time
 * As a user with a visual impairment, I want to use a chat app that is compatible with a screen
 reader so that I can engage with a chat interface.
+
+## Acknowledgements
+
+This project was built as part of the mentored CareerFoundry Full-Stack Web Development Program / Achievement 4/6 / Testing in the Development Process: https://careerfoundry.com/en/courses/become-a-web-developer/
